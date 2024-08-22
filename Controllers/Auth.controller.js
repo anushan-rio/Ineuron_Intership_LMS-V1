@@ -9,6 +9,7 @@ exports.signup=async (req,res)=>{
         
             return res.json({Message:'Email is already registered.'});
         }
+        console.log("T5")
     const user=new User(req.body)
     user.save((err,user)=>{
         if(err){
