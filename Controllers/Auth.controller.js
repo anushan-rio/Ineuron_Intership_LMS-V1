@@ -4,12 +4,10 @@ exports.signup=async (req,res)=>{
     const { Email } = req.body;
     try {
         const existingUser = await User.findOne({ Email });
-        
         if (existingUser) {
         
             return res.json({Message:'Email is already registered.'});
         }
-        console.log("T5")
     const user=new User(req.body)
     user.save((err,user)=>{
         if(err){
@@ -23,11 +21,12 @@ exports.signup=async (req,res)=>{
 }
 catch{
     return res.json({Message:"OOPS DataBase Error"});
-
 }
 }
 
-
+exports.sigin=(req,res)=>{
+    //
+}
 
 
 
