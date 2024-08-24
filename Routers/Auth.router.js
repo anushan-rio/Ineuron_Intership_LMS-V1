@@ -1,10 +1,10 @@
 const express=require('express');
 const router=express.Router();
-const {signup,sigin} =require("../Controllers/Auth.controller")
+const {signup,signin,signout} =require("../Controllers/Auth.controller")
 
 
 router.post('/signup',signup);
-router.post('/sigin',sigin);
-
+router.post('/signin',signin);
+router.post('/signout',signout);
 
 module.exports = router ;
