@@ -20,10 +20,10 @@ App.use(bodyParser.json())
 
 //RouterPath
 const AuthRoute=require("./Routers/Auth.router")
-
-
+const UserRoute=require("./Routers/User.router")
 //Api Calling
 App.use('/api/v1',AuthRoute);
+App.use('/api/v1',UserRoute);
 
 
 App.listen(Port,()=>console.log(`app is conected to the ${Port}`))

@@ -1,7 +1,7 @@
 const User=require("../Models/User.model");
 const { SECRET } = require("../constants");
 const jwt = require("jsonwebtoken");
-const expressJwt = require("express-jwt");
+var expressjwt = require("express-jwt");
 
 exports.signup=async (req,res)=>{
     const { Email } = req.body;
@@ -17,7 +17,7 @@ exports.signup=async (req,res)=>{
             return res.json({err:"OOPS Error Occured"})
         }
         return res.json({
-            Email:user.Email
+            user
         })
 
     })
@@ -53,4 +53,27 @@ exports.signout=(req,res)=>{
 
 
 
+exports.isSignedIn=expressjwt({
+    secret:SECRET,
+    userProperty: "auth"
+})
 
+exports.isAutheticate=(req,res,next)=>{
+    let checker=req.auth._id;
+    if(!checker){
+        return res.json({
+            error:"Access denied"
+        })
+    }
+    next();
+}
+
+
+exports.isAdmin=(req,res,next)=>{
+    if(req.auth.role==0){
+        return res.json({
+            Error:"You Are Not Admin TO Access"
+        })
+    }
+    next();
+}
