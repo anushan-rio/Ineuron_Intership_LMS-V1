@@ -9,9 +9,9 @@ exports.getUserbyId=(req, res, next, id)=>{
             })
         }
         req.profile=user;
+        next();
         
     })
-    next();
 }
 
 
@@ -29,6 +29,32 @@ exports.getuser=(req,res)=>{
     return res.json(UserDetails)
 }
 
-exports.updateUser=(res,req)=>{
-    
+exports.updateUser=(req,res)=>{
+    User.findByIdAndUpdate({_id:req.profile._id},
+                            {$set:req.body},
+                            {new:true,useFindAndModify:false},
+                                (err,user)=>{
+                                    if(err || !user){
+                                        return res.json({
+                                            error:"Error in update"
+                                        })
+                                    }
+                                    user.salt=undefined
+                                    user.encry_password=undefined
+                                    user.createdAt=undefined;
+                                    user.updatedAt=undefined;
+                                    user.Role=undefined;
+                                    res.json(user)
+                                }
+                            )
+}
+
+exports.getalluser=(req,res)=>{
+        User.find({},(err,allusers)=>{
+            if(err){
+                return res.json({Error:"Error Occured"})
+            }
+            return res.json(allusers)
+    })
+
 }

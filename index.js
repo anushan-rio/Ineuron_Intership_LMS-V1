@@ -19,11 +19,13 @@ App.use(bodyParser.json())
 
 
 //RouterPath
-const AuthRoute=require("./Routers/Auth.router")
-const UserRoute=require("./Routers/User.router")
+const AuthRoute=require("./Routers/Auth.router");
+const UserRoute=require("./Routers/User.router");
+const CategoryRoute=require("./Routers/Category.router");
 //Api Calling
 App.use('/api/v1',AuthRoute);
 App.use('/api/v1',UserRoute);
+App.use('/api/v1',CategoryRoute);
 
 
 App.listen(Port,()=>console.log(`app is conected to the ${Port}`))

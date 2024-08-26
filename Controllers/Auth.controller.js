@@ -60,6 +60,7 @@ exports.isSignedIn=expressjwt({
 
 exports.isAutheticate=(req,res,next)=>{
     let checker=req.auth._id;
+    
     if(!checker){
         return res.json({
             error:"Access denied"
@@ -70,7 +71,8 @@ exports.isAutheticate=(req,res,next)=>{
 
 
 exports.isAdmin=(req,res,next)=>{
-    if(req.auth.role==0){
+    console.log("req.profile----"+req.profile.Role)
+    if(req.profile.Role==0){
         return res.json({
             Error:"You Are Not Admin TO Access"
         })
