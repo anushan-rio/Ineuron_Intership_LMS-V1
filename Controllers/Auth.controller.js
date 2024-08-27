@@ -71,7 +71,6 @@ exports.isAutheticate=(req,res,next)=>{
 
 
 exports.isAdmin=(req,res,next)=>{
-    console.log("req.profile----"+req.profile.Role)
     if(req.profile.Role==0){
         return res.json({
             Error:"You Are Not Admin TO Access"

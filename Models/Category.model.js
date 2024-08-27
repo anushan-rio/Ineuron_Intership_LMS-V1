@@ -1,17 +1,14 @@
-const mongoose=require("mongoose");
-const {ObjectId}=mongoose.Schema;
+const mongosse=require('mongoose');
+const { ObjectId } = mongosse.Schema;
 
-const CategorySchema=new mongoose.Schema({
-    Name:{
+const CategorySchema=new mongosse.Schema({
+Name:{
         type:String,
-        require:true,
-        trim:true
-    },
-    UserCategory:{
-        type:ObjectId,
-        ref:"User"
-    },
-},{timestamps:true})
+},
+user:{
+    type: ObjectId,
+    ref:"User"
+}
+})
 
-
-module.exports=mongoose.model("Category",CategorySchema)
+module.exports=mongosse.model("Category",CategorySchema);

@@ -1,10 +1,11 @@
 const express=require("express");
 const router=express.Router();
-const {getuser,getUserbyId,updateUser,getalluser}=require("../Controllers/User.contoller");
+const {getuser,updateUser,getalluser}=require("../Controllers/User.contoller");
 const {isSignedIn,isAutheticate,isAdmin}=require("../Controllers/Auth.controller");
+const {getUserbyId}=require("../Middlewares/User.middleware")
 
 
-router.param("userId",getUserbyId)
+router.param("userId",getUserbyId);
 
 
 router.get("/getUser/:userId",isSignedIn,isAutheticate,getuser);

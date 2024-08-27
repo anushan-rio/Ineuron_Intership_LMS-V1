@@ -78,4 +78,4 @@ UserSchema.virtual("password")
 
 
 
-module.exports=mongosse.model("User",UserSchema)
+module.exports=mongosse.model("User",UserSchema);

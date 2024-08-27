@@ -1,19 +1,19 @@
 const Category=require("../Models/Category.model");
 
-exports.createcategory=(req,res)=>{
-    const {category}=req.body;
-    Category.findOne({category},(err,existingcategory)=>{
+exports.createcategory= async (req,res)=>{
+    const { Name }=req.body;
+    const existingUser = await Category.findOne({ Name });   
+    if(existingUser){
+        return res.json({Message:"Category Already Exist"});
+    }
+    
+    console.log(req.profile._id)
+    const CategoryData={...req.body,user:req.profile._id}
+    const newCategory=new Category(CategoryData);
+    newCategory.save((err,category)=>{
         if(err){
-            return res.json({Error:"Error Occured"})
+            return res.json({Error:"Error Occured While Saving---->"+err});
         }
-        return res.json(existingcategory)
-    });
-    const newcategory=new Category(req.body);
-    Category.save((err,category)=>{
-        if(err){
-            return res.json({Error:"Error Occured While Saving"})
-        }
-        return res.json({Message:"Category Saved SucessFully"})
+        return res.json(category);
     })
-
 }
