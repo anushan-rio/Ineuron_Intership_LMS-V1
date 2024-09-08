@@ -1,6 +1,6 @@
 const BooksStatusModel=require("../Models/BooksStatus.model");
 const BooksCondtion=require("../Models/BookCondtion.model");
-
+const Books=require("../Models/Books.model")
 
 //BooksStatus MiddleWare
 exports.getBooksStatusId=(req, res, next, id)=>{
@@ -25,6 +25,20 @@ exports.getBookCondtionById=(req, res, next, id)=>{
             })
         }
         req.bookcondtiondata=bookcondtion;
+        next();
+        
+    })
+}
+
+//BookID MiddleWare
+exports.getBooksById=(req, res, next, id)=>{
+    Books.findById(id).exec((err,books)=>{
+        if(err || !books){
+            return res.json({
+                error:"No Data Avaiable"
+            })
+        }
+        req.books=books;
         next();
         
     })

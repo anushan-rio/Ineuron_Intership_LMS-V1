@@ -21,5 +21,52 @@ exports.addBooks=async(req,res)=>{
     })
 }
 
+exports.gettallBooks=async(req,res)=>{
+    const userid=req.profile._id;
+    Books.find({User:userid})
+    .populate('BookCategory' ,'Name')
+    .populate('BookStatus' ,'BooksStatus')
+    .populate('BookCondtion' ,'BookState')
+    .exec(
+        (err,books)=>{
+            if(err){
+            return res.json({Error:"Erro Occured While Geting the Book"})
 
-//TODO GETALL,DELETE,UPDATE BOOKS
+            }
+                return res.json(books)
+        }
+    )
+        
+}
+
+exports.deleteBooks=(req,res)=>{
+    const books=req.books;
+    const userid=req.profile._id;
+    Books.deleteOne({_id:books._id,User:userid},(err,book)=>{
+        if(err){
+            return res.json({
+                error:"Error occured while deteing the category"
+            })
+        }
+        console.log(book)
+        return res.json(book)
+    })
+}
+
+
+exports.updateBooks=(req,res)=>{
+    const books=req.books;
+    const userid=req.profile._id;
+    Books.findByIdAndUpdate({_id:books._id,User:userid},
+                            {$set:req.body},
+                            {new:true,useFindAndModify:false},
+                                (err,book)=>{
+                                    if(err || !book){
+                                        return res.json({
+                                            error:"Error in update"
+                                        })
+                                    }
+                                    res.json(book)
+                                }
+                            )
+}

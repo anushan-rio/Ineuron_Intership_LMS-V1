@@ -2,7 +2,7 @@ const express=require("express");
 const router=express.Router();
 const {getuser,updateUser,getalluser}=require("../Controllers/User.contoller");
 const {isSignedIn,isAutheticate,isAdmin}=require("../Controllers/Auth.controller");
-const {getUserbyId}=require("../Middlewares/User.middleware")
+const {getUserbyId}=require("../Middlewares/User.middleware");
 
 
 router.param("userId",getUserbyId);

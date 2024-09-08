@@ -32,6 +32,10 @@ const Books=new mongosse.Schema({
         require:true,
         trim:true
     },
+    Location:{
+        type:String,
+        require:true
+    },
     BookCategory:{
         type: ObjectId,
         ref:"Category"

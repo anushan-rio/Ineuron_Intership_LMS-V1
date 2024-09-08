@@ -47,6 +47,7 @@ const CategoryRoute=require("./Routers/Category.router");
 const BooksStatusRoute=require("./Routers/BookStatus.router");
 const BookCondtionRoute=require("./Routers/BooksCondtion.router");
 const BooksRoute=require("./Routers/Books.router");
+const IssueBookRoute=require("./Routers/IssueBook.router")
 
 //Api Calling
 App.use('/api/v1',AuthRoute);
@@ -55,6 +56,7 @@ App.use('/api/v1',CategoryRoute);
 App.use('/api/v1',BooksStatusRoute);
 App.use('/api/v1',BookCondtionRoute);
 App.use('/api/v1',BooksRoute);
+App.use('/api/v1',IssueBookRoute);
 
 
 App.listen(Port,()=>console.log(`app is conected to the ${Port}`))

@@ -9,6 +9,6 @@ user:{
     type: ObjectId,
     ref:"User"
 }
-})
+},{timestamps:true})
 
 module.exports=mongosse.model("Category",CategorySchema);
