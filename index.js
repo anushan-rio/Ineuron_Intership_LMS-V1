@@ -2,6 +2,7 @@ const { PORT_NUMBER } = require('./constants');
 const express=require('express');
 const mongoose=require("mongoose");
 const morgan = require('morgan');
+const cors = require('cors')
 const {logger}=require("./DataBase/Logger.js")
 
 const App=express();
@@ -19,7 +20,7 @@ mongoose.connect(db,{
 
 //Middleware
 App.use(bodyParser.json());
-
+App.use(cors())
 
 
 const morganFormat = ":method :url :status :response-time ms";
@@ -47,7 +48,8 @@ const CategoryRoute=require("./Routers/Category.router");
 const BooksStatusRoute=require("./Routers/BookStatus.router");
 const BookCondtionRoute=require("./Routers/BooksCondtion.router");
 const BooksRoute=require("./Routers/Books.router");
-const IssueBookRoute=require("./Routers/IssueBook.router")
+const IssueBookRoute=require("./Routers/IssueBook.router");
+const SearchRoute=require("./Routers/Search.router");
 
 //Api Calling
 App.use('/api/v1',AuthRoute);
@@ -57,6 +59,7 @@ App.use('/api/v1',BooksStatusRoute);
 App.use('/api/v1',BookCondtionRoute);
 App.use('/api/v1',BooksRoute);
 App.use('/api/v1',IssueBookRoute);
+App.use('/api/v1',SearchRoute);
 
 
 App.listen(Port,()=>console.log(`app is conected to the ${Port}`))
