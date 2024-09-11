@@ -18,7 +18,8 @@ mongoose.connect(db,{
     .then(() => console.log('Database Connected Successfully!'))
     .catch(()=>console.log("Database NotConnected"));
 
-//Middleware
+//Middleware For App
+
 App.use(bodyParser.json());
 App.use(cors())
 
