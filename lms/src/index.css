@@ -1,0 +1,20 @@
+.btn,
+.jumbotron,
+.nav :hover {
+    border-radius: 0px;
+
+}
+body {
+    background:grey;
+}
+
+footer {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+} 
+
+#buttonstyle{
+    margin-top: 20px;
+}
