@@ -2,7 +2,7 @@ import React, { useState ,useEffect} from 'react';
 import Base from "../../Common/Base"
 import Meun from "../../Common/Meun"
 import {isAutheticated} from "../../Helper/Signuphelper"
-import {getBooks,updateBooks} from "../../Helper/AdminHelper/Bookshelper"
+import {getBooks,updateBooks,deletebooks} from "../../Helper/AdminHelper/Bookshelper"
 
 
 
@@ -74,7 +74,26 @@ const preload = () => {
     });
 };
 
+
+const deletethisItem = Booksid => {
+  
+  deletebooks(Booksid, user._id, token)
+  .then(data=>{
+    console.log("Inside if",typeof(data.deletedCount))
+    if(data.deletedCount==1){
+      console.log("preload")
+      preload();
+    }
+  })
+  //preload();
+};
+
+
+
+
   return (
+    <Base title="Manage Books" description="Page For Manage Books">
+      <Meun></Meun>
     <div>
       <h1>Item List</h1>
       
@@ -82,10 +101,10 @@ const preload = () => {
         <thead>
           <tr>
           
-            <th>Name</th>
-            <th>Author</th>
-            <th>Copies</th>
-            <th>Actions</th>
+            <th style={{color:'Black'}}>Name</th>
+            <th style={{color:'Black'}}>Author</th>
+            <th style={{color:'Black'}}>Copies</th>
+            <th style={{color:'Black'}}>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -126,11 +145,11 @@ const preload = () => {
               </td>
               <td>
                 {editId === item._id ? (
-                  <button onClick={updateItem}>Update</button>
+                  <button onClick={updateItem} class="btn btn-success">Update</button>
                 ) : (
                   <>
-                    <button onClick={() => startEdit(item)}>Edit</button>
-                    <button onClick={() => deleteItem(item.id)}>Delete</button>
+                    <button onClick={() => startEdit(item)} class="btn btn-primary">Edit</button>
+                    <button onClick={() => deletethisItem(item._id)} className="btn btn-danger">Delete</button>
                   </>
                 )}
               </td>
@@ -139,6 +158,7 @@ const preload = () => {
         </tbody>
       </table>
     </div>
+    </Base>
   );
 };
 

@@ -9,6 +9,7 @@ import CreateBookStatus from "../components/AdminDashboard/CreateBookStatus"
 import GetAllBookStatus from "../components/AdminDashboard/GetAllBookStatus"
 import Books from "../components/AdminDashboard/createBook"
 import AllBooks from "../components/AdminDashboard/GetAllBooks"
+import IssueBook from "../components/AdminDashboard/IssueBook"
 import User from "../components/User"
 const Routers=()=>{
     return(
@@ -24,6 +25,7 @@ const Routers=()=>{
                 <Route exact path="/admin/mange/bookstatus" element={<GetAllBookStatus/>}/>
                 <Route exact path="/admin/create/Books" element={<Books/>}/>
                 <Route exact path="/admin/all/Books" element={<AllBooks/>}/>
+                <Route exact path="/admin/IssueBoooks" element={<IssueBook/>}/>
                 <Route exact path="/user" element={<User/>}/>
 
             </Routes>

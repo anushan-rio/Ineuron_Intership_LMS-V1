@@ -22,7 +22,6 @@ function showPopup(message) {
 //PreLoad Function
 const preload = () => {
     getCategory(user._id, token).then(data => {
-    console.log('data----',data.Message)
     if (data.Message) {
         showPopup(data.Message);
     } else {

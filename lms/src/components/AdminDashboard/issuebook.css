@@ -1,0 +1,47 @@
+body {
+    background-color: #343a40; /* Dark background for contrast */
+}
+
+.row {
+    margin-top: 50px; /* Add some spacing at the top */
+}
+
+.col-md-6 {
+    background-color: #495057; /* Light grey background for the form */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Inner padding */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Spacing between form elements */
+}
+
+.text-light {
+    color: #ffffff; /* Light text for labels */
+}
+
+input.form-control {
+    background-color: #6c757d; /* Darker input fields */
+    color: #ffffff; /* White text in input fields */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners for input fields */
+}
+
+input.form-control:focus {
+    background-color: #5a6268; /* Darker on focus */
+    outline: none; /* Remove outline */
+}
+
+.btn {
+    margin-top: 20px; /* Spacing above button */
+}
+
+#buttonstyle {
+    background-color: #28a745; /* Green button */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+#buttonstyle:hover {
+    background-color: #218838; /* Darker green on hover */
+}

@@ -21,6 +21,9 @@ const Meun=()=>{
                     <Link   className="nav-link" style={{ color: 'white' }} to="/admin/all/Books">MangeBooks</Link>
                 </li>
                 <li className="nav-item">
+                    <Link   className="nav-link" style={{ color: 'white' }} to="/admin/IssueBoooks">IssueBoooks</Link>
+                </li>
+                <li className="nav-item">
                     <Link   className="nav-link" style={{ color: 'white' }} to="/signout">signout</Link>
                 </li>
             </ul>

@@ -50,3 +50,18 @@ export const updateBooks = (booksdata,editId,userId,token) => {
     })
     .catch(err => console.log("err------"+err));
 };
+//deletebooks
+
+export const deletebooks = (booksid, userId, token) => {
+    return fetch(`${API}/deleteBooks/${userId}/${booksid}`, {
+    method: "DELETE",
+    headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+    }
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
+};
