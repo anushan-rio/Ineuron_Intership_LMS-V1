@@ -2,6 +2,7 @@
 
 This is a Library Management System built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. The application allows users to manage books, authors, and users in a library. Users can borrow and return books, as well as search for books by various criteria.
 
+##Technologies Used: MongoDB, Express.js, React.js, Node.js (MERN Stack)
 
 ## Features
 
